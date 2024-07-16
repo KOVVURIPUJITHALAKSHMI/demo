@@ -1,0 +1,63 @@
+.parent{
+    width:100%;
+    height:200px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border:2px solid black;
+    position:relative;
+}
+.child{
+    width:18%;
+    height:180px;
+    border:1px solid black;
+}
+.slick-prev.slick-arrow{
+    height:fit-content;
+    
+
+}
+li.slick-active{
+    background-color: red;
+    
+}
+.slick-next.slick-arrow{
+    height:fit-content;
+
+}
+.slick-dots{
+    gap:10px;
+    display:flex;
+    height:fit-content;
+    width:fit-content;
+    position:absolute;
+    bottom:-20px;
+    left:45%;
+}
+li button{
+    display:none;
+}
+
+
+var movingImg = document.getElementById('you'); 
+var currentCell = movingImg.parentElement; 
+var currentRowIndex = currentCell.parentElement.rowIndex;
+var targetRow = currentCell.parentElement.parentElement.rows[currentRowIndex - 1];
+if (!targetRow) return; 
+ var targetCell = targetRow.cells[currentCell.cellIndex]; 
+targetCell.appendChild(movingImg);
+
+
+
+var currentCell = document.querySelector('#you').closest('td');
+    var currentRow = currentCell.parentNode; 
+    var rowIndex = currentRow.rowIndex;
+    if (rowIndex > 0) {
+        var table = document.getElementById('#ta');
+        var aboveRow = table.rows[rowIndex - 1]; 
+        var aboveCell = aboveRow.cells[currentCell.cellIndex]; 
+        
+        aboveCell.appendChild(document.getElementById('#you'));
+    } else {
+        alert("No more cells above!");
+    }
